@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+</head>
+<body>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+        <strong>Message:</strong> {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    <h3>login</h3>
+    <form action="/login" method="post">
+        {% csrf_token %}
+        <label for="">Username</label>
+        <input type="text" name="username" id="username" placeholder="Enter your Username" required> <br>
+        <label for="">Password</label>
+        <input type="password" name="password" id="password" placeholder="Enter your Password" required> <br>
+        <button type="submit">login</button>
+        <p>Already have not an account? <a href="register">Sign Up</a></p>
+    </form>
+</body>
+</html>
