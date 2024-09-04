@@ -6,4 +6,5 @@ class TokenGenerator(PasswordResetTokenGenerator):
         return (
             text_type(user.pk) + text_type(timestamp)
         )
+
 generate_token = TokenGenerator()
