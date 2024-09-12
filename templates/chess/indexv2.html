@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Chess Game</title>
+    <link rel="stylesheet" href="{% static 'css/style_v2.css' %}">
+</head>
+<body>
+    <h1>New Chess Game Version</h1>
+    <div id="board-container">
+        <table id="new-chessboard">
+            <!-- New chessboard generated with JavaScript -->
+        </table>
+    </div>
+    <div id="status"></div>
+    <button id="new-game">Start New Game</button>
+    <script src="{% static 'js/script_v2.js' %}"></script>
+</body>
+</html>

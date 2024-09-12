@@ -1,9 +1,17 @@
 from django.shortcuts import render, redirect
+
+
 from django.http import HttpResponse
+
+
 from django.contrib.auth.models import User
+
 from django.contrib import messages
+
 from django.contrib.auth import authenticate, login, logout
+
 from AI_chess_web import settings
+
 from django.core.mail import send_mail, EmailMessage
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -58,9 +66,8 @@ def register(request):
         message = "Welcome " + myuser.first_name + "to AI Chess!\nPlease confirm your email address."
         from_email = settings.EMAIL_HOST_USER
         to_list = [myuser.email]
-        send_mail(subject, message, from_email, to_list, fail_silently=True)
+        send_mail(subject, message, from_email, to_list, fail_silently=False)
 
-        # Email address confirmation
         current_site = get_current_site(request)
         email_subject = 'Confirm your email @ AI Chess website'
         uid = urlsafe_base64_encode(force_bytes(myuser.pk))
@@ -72,15 +79,15 @@ def register(request):
         f"http://{current_site.domain}/activate/{uid}/{token}\n\n"
         "Thank you for joining AI Chess!"
         )
-        # message2 = render_to_string('email_confirmation.html', {
-        #     'name': myuser.first_name,
-        #     'domain': current_site.domain,
-        #     'uid': urlsafe_base64_encode(force_bytes(myuser.pk)),
-        #     'token': generate_token.make_token(myuser),
-        # })
-        email = EmailMessage(email_subject, email_body, settings.EMAIL_HOST_USER, [myuser.email])
-        email.send(fail_silently=True)
-            
+
+        email = EmailMessage(
+        email_subject,
+        email_body,
+        settings.EMAIL_HOST_USER,  # Sender email
+        [myuser.email]  # Recipient email
+        )
+
+        email.send(fail_silently=False) 
         return redirect('login')
         
     return render(request, 'authentication/register.html')

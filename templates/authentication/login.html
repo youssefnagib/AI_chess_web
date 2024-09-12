@@ -1,28 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>register</title>
-</head>
-<body>
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
-        <strong>Message:</strong> {{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+	
+{% block content %}
+<style>
+    .space {
+        z-index: 999;
+        padding-top: 90px;
+}
+</style>
+<div class="limiter space">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form p-l-55 p-r-55 p-t-178" action="/login" method="post">
+                {% csrf_token %}
+                <span class="login100-form-title">
+                    Login
+                </span>
+                
+                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username" >
+                    <input class="input100" type="text" name="username" placeholder="Username" id="username" required>
+                    <span class="focus-input100"></span>
+                </div>
+                
+                <div class="wrap-input100 validate-input" data-validate = "Please enter password">
+                    <input class="input100" type="password" name="password" id="password" placeholder="Password" required>
+                    <span class="focus-input100"></span>
+                </div>
+                
+                <div class="text-right p-t-13 p-b-23">
+                    <span class="txt1">
+                        Forgot
+                    </span>
+                    
+                    <a href="#" class="txt2">
+                        Username / Password?
+                    </a>
+                </div>
+                
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" type="submit">
+                        login
+                    </button>
+                </div>
+                
+                <div class="flex-col-c p-t-70 p-b-40">
+                    <span class="txt1 p-b-9">
+                        Don’t have an account?
+                    </span>
+                    
+                    <a href="{% url 'register' %}" class="txt3">
+                        Register now
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
-    {% endfor %}
-    <h3>login</h3>
-    <form action="/login" method="post">
-        {% csrf_token %}
-        <label for="">Username</label>
-        <input type="text" name="username" id="username" placeholder="Enter your Username" required> <br>
-        <label for="">Password</label>
-        <input type="password" name="password" id="password" placeholder="Enter your Password" required> <br>
-        <button type="submit">login</button>
-        <p>Already have not an account? <a href="register">Sign Up</a></p>
-    </form>
-</body>
-</html>
+</div>
+{% endblock content %}

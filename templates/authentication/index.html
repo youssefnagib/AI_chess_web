@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <!-- Include Bootstrap CSS (optional) -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>aichessweb</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% load static %}
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min2.css' %}">
+    <!-- style css -->
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="{% static 'css/responsive2.css' %}">
+    
+    <!-- fevicon -->
+    <link rel="icon" href="{% static 'img/img.jpg' %}" type="image/gif" />
+    <!-- chat_bot -->
+    <script src="{% static 'js/chat_bot.js' %}"></script>
+
 </head>
-<body>
+
+<body class="main-layout">
+    <!-- loader  -->
+    <div class="loader_bg">
+        <div class="loader"><img src="{% static 'img/loading.gif' %}" alt="#" /></div>
+    </div>
+    <!-- end loader -->
     {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
         <strong>Message:</strong> {{ message }}
@@ -16,21 +42,218 @@
         </button>
     </div>
     {% endfor %}
-    
-    <h3>Welcome to AI Chess</h3>
-    
-    {% if user.is_authenticated %}
-    <h3>Hello {{ fname }}</h3>
-    <h4>You are successfully logged in</h4>
-    <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
-    {% else %}
-    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
-    <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
-    {% endif %}
-    
-    <!-- Include Bootstrap JS (optional) -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- header -->
+    <header>
+        <!-- header inner -->
+        <div class="header-top">
+            <div class="header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                            <div class="full">
+                                <div class="center-desk">
+                                    <div class="logo">
+                                        <a href="index.html"><img src="{% static 'img/img_removed.png' %}" alt="#" width="200" height="100"/></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                            {% if user.is_authenticated %}
+                            <ul class="top_icon">
+                                <li class="button_login"><a href="{% url 'logout' %}">Logout</a></li>
+                            </ul>
+                            {% else %}
+                            <ul class="top_icon">
+                                <li class="button_login"><a href="{% url 'login' %}">Login</a></li>
+                                <li> <a href="{% url 'register' %}">Register</a></li>
+                                <li class="mean-last"></li>
+                            </ul>
+                            {% endif %}
+
+                                
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end header inner -->
+
+            <!-- end header -->
+            <section class="slider_section">
+                <div class="banner_main">
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-2 padding_left0">
+                                <div class="menu-area">
+                                <div class="limit-box">
+                                    <nav class="main-menu">
+                                        <ul class="menu-area-main">
+                                            <li class="active"> <a href="#game">Home</a> </li>
+                                            <li> <a href="{% url 'chess_1v1' %}">Play 1v1</a> </li>
+                                            <li> <a href="#about">Play AI(Soon)</a></li>
+                                            <li> <a href="#about">About</a> </li>
+                                            <li> <a href="#footer">Contact</a> </li>
+                                           
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 ">
+                                <div class="text-bg">
+                                    <h1>Welcome in AI Chess Website</h1>
+                                    <span>play and enjoy<br> chess is world</span>
+                                    <a href="#">Play</a>
+                                </div>
+                            </div>
+                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 ">
+                                <div class="text-img">
+                                    <p>Welcome in AI Chess Website</p>
+                                   <!-- <figure><img src="images/chess_home2.jpg" alt="#"/></figure> -->
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+        
+           </section>
+        </div>
+    </header>
+    <!-- We are -->
+    <div id="software" class="We_are">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>what is chess</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                     <div class="box_bg">
+                         <div class="box_bg_img">
+                             <figure><img src="{% static 'img/OIP.jpeg' %}"></figure>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 border_right">
+                     <div class="box_text">
+                        Chess is a classic two-player strategy game played on an 8x8 grid called a chessboard. Each player controls 16 pieces: one king, one queen, two rooks, two knights, two bishops, and eight pawns. The objective is to checkmate the opponent's king, meaning the king is in a position where it cannot escape capture.
+
+The game requires a combination of tactics, foresight, and strategic planning. While chess originated in India around the 6th century, it has evolved into a globally recognized game of intellect, often seen as a test of mental skill. Today, it is played both recreationally and competitively, with AI now being a key player in advanced chess training and analysis.
+                         <a href="#">Read more</a>
+                     </div>
+                 </div> 
+            </div>
+        </div>
+    </div>
+    <!-- end We are -->
+
+    <!-- about  -->
+    <div id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2>About Our Game</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="about-box">
+                        <figure><img src="{% static 'img/img.jpg' %}" alt="#" /></figure>
+
+                        <p> About AI Chess Website
+
+                            Welcome to AI Chess Website, your premier destination for exploring the world of chess powered by artificial intelligence that u can chat with. Our mission is to enhance your chess experience by integrating cutting-edge AI technologies, offering a platform where strategy meets innovation. <br>
+                            
+                            Founded by passionate chess enthusiasts and developers, AI Chess Website aims to provide players of all levels with tools to sharpen their skills, learn from AI-driven analysis, and enjoy challenging matches against intelligent algorithms. Whether you're a beginner or a seasoned player, our platform is designed to help you grow, compete, and thrive. <br>
+                            
+                            At AI Chess Website, we believe in the power of technology to elevate the timeless game of chess. With features like personalized game analysis, AI opponents,  and an intuitive interface, we are committed to making chess more accessible, engaging, and exciting. <br>
+                            
+                            Join us as we combine the art of chess with the science of artificial intelligence. For inquiries or support, feel free to reach out to us at aichesswebsite.com.
+                           </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- end abouts -->
+
+    <!--  footer -->
+    <footer>
+        <div class="footer" id='footer'>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>connect us</h2>
+                    </div>                       
+                                <div class="address">
+                                    <ul class="social_link">
+                                        <li><a href="#"><img src="{% static 'img/fb.png' %}"></a></li>
+                                        <li><a href="#"><img src="{% static 'img/tw.png' %}"></a></li>
+                                        <li><a href="#"><img src="{% static 'img/lin(2).png' %}"></a></li>
+                                         <li><a href="#"><img src="{% static 'img/instagram.png' %}"></a></li>
+                                    </ul>
+                                    <a href="index.html"> <img src="{% static 'img/img_removed.png' %}" alt="logo" width="200" height="100"></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6">
+                                <div class="address">
+                                    <h3>Quick links</h3>
+                                    <ul class="Menu_footer">
+                                        <li class="active"> <img src="{% static 'img/31.png' %}" alt="#"> <a href="#game">Play</a> </li>
+                                        <li><img src="{% static 'img/31.png' %}" alt="#"> <a href="#about">About</a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-6 ">
+                                <div class="address">
+                                    <h3>Contact us </h3>
+                                    <ul class="loca">
+                                        <li>
+                                            <a href="#"><img src="{% static 'img/loc.png' %}" alt="#" /></a>Cairo
+                                            <br>Egypt </li>
+                                        <li>
+                                            <a href="#"><img src="{% static 'img/email.png' %}" alt="#" /></a>aichessweb@gmail.com </li>
+                                        <li>
+                                            <a href="#"><img src="{% static 'img/call.png' %}" alt="#" /></a>+1 1234567</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    <p>© 2019 All Rights Reserved. <a href="https://aichesswebsite.com/">AI Chess Website</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end footer -->
+    <!-- Javascript files-->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+    <script src="{% static 'js/plugin.js' %}"></script>
+    <!-- sidebar -->
+    <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
 </body>
+
 </html>
