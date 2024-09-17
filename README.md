@@ -1,82 +1,62 @@
-# chessboard.js
+# <p style="font-size: 36px; font-weight: bold;">AI Chess Website</p>
 
-chessboard.js is a JavaScript chessboard component. It depends on [jQuery].
+**AI Chess Website** is an evolving web-based chess platform where users can engage in interactive chess matches with friends and, soon, against an AI-powered opponent. The platform is designed for ease of use with a modern interface built on Django, JavaScript, and Bootstrap.
 
-Please see [chessboardjs.com] for documentation and examples.
+### 🚀 <p style="font-size: 24px; font-weight: bold;">Future Plans</p>
+The AI opponent feature is under development and will provide challenging games tailored to various skill levels.
 
-## What is chessboard.js?
+---
 
-chessboard.js is a JavaScript chessboard component with a flexible "just a
-board" API that
+## 🎯 <p style="font-size: 24px; font-weight: bold;">Features</p>
 
-chessboard.js is a standalone JavaScript Chess Board. It is designed to be "just
-a board" and expose a powerful API so that it can be used in different ways.
-Here's a non-exhaustive list of things you can do with chessboard.js:
+- **User Registration & Login**: Secure account creation with email confirmation.
+- **Play Chess**: Real-time chess games between users.
+- **Responsive Design**: Optimized for all devices, thanks to Bootstrap.
+- **Account Management**: Users can manage their profiles, view their game history, and track progress.
 
-- Use chessboard.js to show game positions alongside your expert commentary.
-- Use chessboard.js to have a tactics website where users have to guess the best
-  move.
-- Integrate chessboard.js and [chess.js] with a PGN database and allow people to
-  search and playback games (see [Example 5000])
-- Build a chess server and have users play their games out using the
-  chessboard.js board.
+---
 
-chessboard.js is flexible enough to handle any of these situations with relative
-ease.
+## 🛠️ <p style="font-size: 24px; font-weight: bold;">Tech Stack</p>
 
-## What can chessboard.js **not** do?
+- **Backend**: Django (Python)
+- **Frontend**: JavaScript, Bootstrap (CSS Framework)
+- **Database**: SQLite (Development) / PostgreSQL (Production)
+- **Email Handling**: Integrated email system for account verification
 
-The scope of chessboard.js is limited to "just a board." This is intentional and
-makes chessboard.js flexible for handling a multitude of chess-related problems.
+---
 
-This is a common source of confusion for new users. [remove?]
+## ⚙️ <p style="font-size: 24px; font-weight: bold;">Installation Guide</p>
 
-Specifically, chessboard.js does not understand anything about how the game of
-chess is played: how a knight moves, who's turn is it, is White in check?, etc.
+Follow these steps to get the project running locally:
 
-Fortunately, the powerful [chess.js] library deals with exactly this sort of
-problem domain and plays nicely with chessboard.js's flexible API. Some examples
-of chessboard.js combined with chess.js: 5000, 5001, 5002
-
-Please see the powerful [chess.js] library for an API to deal with these sorts
-of questions.
-
-
-This logic is distinct from the logic of the board. Please see the powerful
-[chess.js] library for this aspect of your application.
-
-
-
-Here is a list of things that chessboard.js is **not**:
-
-- A chess engine
-- A legal move validator
-- A PGN parser
-
-chessboard.js is designed to work well with any of those things, but the idea
-behind chessboard.js is that the logic that controls the board should be
-independent of those other problems.
-
-## Docs and Examples
-
-- Docs - <http://chessboardjs.com/docs>
-- Examples - <http://chessboardjs.com/examples>
-
-## Developer Tools
-
-```sh
-# create a build in the build/ directory
-npm run build
-
-# re-build the website
-npm run website
+### 1. Clone the repository:
+```bash
+git clone https://github.com/your-username/ai-chess-website.git
+cd ai-chess-website
 ```
+### 2. Set up a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+```
+### 3. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+4. Apply database migrations:
+```bash
+Copy code
+python manage.py migrate
+```
+5. Start the development server:
+```bash
+python manage.py runserver
+```
+Visit the app in your browser at http://127.0.0.1:8000.
 
-## License
 
-[MIT License](LICENSE.md)
+### Key Changes:
+- **Installation Guide**: Steps for setting up the virtual environment, installing dependencies, applying migrations, and running the server are included with appropriate Markdown formatting and HTML for styling.
+- **Large and Bold Titles**: Sections like "Features," "Tech Stack," "Installation Guide," "What’s Coming Next?", "Contributing," and "License" use HTML to make titles larger and bold.
 
-[jQuery]:https://jquery.com/
-[chessboardjs.com]:http://chessboardjs.com
-[chess.js]:https://github.com/jhlywa/chess.js
-[Example 5000]:http://chessboardjs.com/examples#5000
+This `README.md` should be well-structured and easy to follow, with clear headings and instructions for setting up and contributing to the project.

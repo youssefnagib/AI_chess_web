@@ -2,15 +2,61 @@ import chess
 import random
 class ChessGame:
     def __init__(self, mode='1v1'):
+        """
+        Initialize a new ChessGame instance.
+
+        Parameters:
+        mode (str): The game mode. It can be either '1v1' (for two players) or 'AI' (for one player against AI).
+                    Default is '1v1'.
+
+        Attributes:
+        board (chess.Board): The chess board.
+        current_turn (str): The current player's turn. It can be either 'white' or 'black'.
+        mode (str): The game mode.
+
+        Returns:
+        None
+        """
         self.board = chess.Board()
         self.current_turn = 'white'
         self.mode = mode
 
     def reset_board(self):
+        """
+        Reset the chess board to its initial state and set the current turn to white.
+
+        Parameters:
+        None
+
+        Returns:
+        None
+
+        This method clears the current chess board and resets the game state.
+        It also sets the current turn to white, indicating that it's the white player's turn to make a move.
+        """
         self.board.reset()
         self.current_turn = 'white'
 
+
     def make_move(self, move_uci):
+        """
+        Attempts to make a move on the chess board based on the given move in UCI format.
+
+        Parameters:
+        move_uci (str): The move to be made in UCI format (e.g., 'e2e4').
+
+        Returns:
+        bool: True if the move is valid and made successfully, False otherwise.
+              If an exception occurs during the move attempt, the error message will be printed,
+              and the function will return False.
+
+        This function first attempts to convert the given move_uci string into a chess.Move object.
+        It then checks if the move is a legal move on the current chess board.
+        If the move is legal, it is pushed onto the board and the current turn is switched.
+        If the move is not legal, an error message is printed, and the function returns False.
+        If an exception occurs during the move attempt, the error message is printed,
+        and the function returns False.
+        """
         try:
             move = chess.Move.from_uci(move_uci)
             if move in self.board.legal_moves:
@@ -25,10 +71,36 @@ class ChessGame:
             return False
 
     def display_board(self):
+        """
+        Display the current state of the chess board.
+
+        Parameters:
+        None
+
+        Returns:
+        None
+
+        This function prints the current state of the chess board to the console.
+        It uses the built-in print function to display the board, which is stored as a string in the `self.board` attribute.
+        """
         print(self.board)
 
+
     def is_check(self):
+        """
+        Check if the current player is in check.
+
+        Parameters:
+        None
+
+        Returns:
+        bool: True if the current player is in check, False otherwise.
+              The `self.board.is_check()` method is used to determine if the current player is in check.
+              This method returns True if the current player's king is under attack by an opponent's piece,
+              and False otherwise.
+        """
         return self.board.is_check()
+
 
     def is_checkmate(self):
         return self.board.is_checkmate()
